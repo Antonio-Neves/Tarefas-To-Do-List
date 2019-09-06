@@ -1,0 +1,119 @@
+#:kivy 1.11.0
+
+# --- Wid Principal --- #
+<Principal>:
+	canvas:
+		Color:
+			rgba: (0.05, 0.18, .41, 1)
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+
+	# --- Barra superior --- #
+	FloatLayout:
+		id: principal
+		pos_hint: {'x': 0, 'y': .90}
+		size_hint: (1, .10)
+		canvas.before:
+			Color:
+			    rgba: (1, 1, 1, .3)
+			Line:
+				width: .5
+			    rectangle: self.x, self.y, self.width, 0
+
+		Button: # --- Botão que adiciona a tarefa --- #
+			pos_hint: {'x': .89, 'y': .20}
+			size_hint: (.08, .60)
+			border: (0, 0, 0, 0)
+			background_normal: 'Images/Ok.png'
+			background_down: 'Images/Ok.png'
+			on_press: root.adicionar_tarefa(texto.text)
+
+		# --- Texto da tarefa --- #
+		BoxLayout:
+			canvas.before:
+				Color:
+					rgba: (0.83, 0.94, 1, 1)
+				RoundedRectangle:
+					pos: self.pos
+					size: self.size
+					radius: [4,]
+			pos_hint: {'x': .02, 'y': .20}
+			size_hint: (.74, .60)
+
+			TextInput:
+				id: texto
+				focus: True
+				background_normal: ''
+				background_color: (0, 0, 0, 0)
+				multiline: False
+				hint_text: 'Tarefa'
+
+
+	# ----- Wid rolagem da tela ----- #
+	ScrollView:
+		pos_hint: {'x': 0, 'y': .0}
+		size_hint: (1, .90)
+
+		BoxLayout: # --- Layout onde vão ser adicionadas as tarefas --- #
+			id: boxtarefas
+			padding: 5
+			spacing: 5
+			orientation: 'vertical'
+			size_hint_y: None
+			height: self.minimum_height
+
+
+# ----- Wid a ser adicionado por cada tarefa ----- #
+<Tarefas>:
+	id: widgettarefa
+	canvascolor: (1, 1, 1, .3)
+	canvas.before:
+		Color:
+			rgba: self.canvascolor
+		Line:
+			rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5, 100)
+			width: .5
+	size_hint_y: None
+	height: 40
+
+	Label: # --- tarefa --- #
+		id: tarefa
+		pos_hint: {'x': 0, 'y': 0}
+		size_hint: (.90, 1)
+		text_size: self.size
+		padding: (5, 0)
+		halign: 'left'
+		valign: 'center'
+
+	Button: # --- Botão escolha da cor --- #
+		id: btn_cor
+		canvascolor: (1, 1, 1, .3)
+		canvas:
+			Color:
+				rgba: self.canvascolor
+			Line:
+				rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5)
+				width: 1
+		pos_hint: {'x': .78, 'y': .20}
+		size_hint: (.09, .60)
+		border: (0, 0, 0, 0)
+		background_normal: ''
+		background_color: (0, 0, 0, 0)
+		text_size: self.size
+		halign: 'center'
+		valign: 'middle'
+		color: self.canvascolor
+		text: 'C'
+		on_release: root.cortarefa()
+
+	Button: # --- Botão remover tarefa --- #
+		id: removertarefa
+		pos_hint: {'x': .90, 'y': .22}
+		size_hint: (.09, .55)
+		border: (0, 0, 0, 0)
+		background_normal: 'Images/Close.png'
+		background_down: 'Images/Close.png'
+		on_release: root.remover_tarefa(tarefa.text)
+		on_release: app.root.ids.boxtarefas.remove_widget(root)
