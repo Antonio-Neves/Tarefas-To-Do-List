@@ -17,7 +17,7 @@ a = Analysis(['main.py'],
              win_private_assemblies=False,
              cipher=block_cipher,
              noarchive=False)
-a.datas += [('Logo.png','C:\dev\Tarefas\Images\Logo.png','Data')]
+a.datas += [('Logo.ico','C:\dev\Tarefas\Images\Logo.ico','Data')]
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
@@ -30,7 +30,7 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=False,
-          icon='C:\dev\Tarefas\Images\Logo.png')
+          icon='C:\dev\Tarefas\Images\Logo.ico')
 coll = COLLECT(exe,
                Tree('C:\\dev\\Tarefas'),
                a.binaries,
