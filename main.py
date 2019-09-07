@@ -45,6 +45,7 @@ def savedata():
 	with open('data.json', 'w') as data:
 		json.dump(listatarefas, data)
 
+
 # --- Salva as cores das tarefas no ficheiro Json --- #
 def salvar_cor_tarefa(texto, cortarefa):
 
