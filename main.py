@@ -148,7 +148,7 @@ class Main(App):
 
 	def build(self):
 		self.title = 'Tarefas'
-		self.icon = 'Images/Logo.png'
+		self.icon = 'Images/Logo.ico'
 
 		return Principal()
 
