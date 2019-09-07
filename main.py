@@ -10,8 +10,8 @@
 
 
 # ----- Importações iniciais ----- #
-import kivy
-kivy.require('1.11.0')
+#import kivy
+#kivy.require('1.11.0')
 
 import os
 from kivy import Config
@@ -29,20 +29,43 @@ Config.set('kivy', 'exit_on_escape', '0')
 Config.set('graphics', 'width', 300)
 Config.set('graphics', 'heigth', 500)
 
+
 # ----- Importações ----- #
 import json
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 
 
+# ----- Cria pastas ----- #
+try:
+    os.mkdir(os.path.expanduser(
+        "~/Tarefas App"))
+except:
+    pass
+
+
 # ----- Lista das tarefas ----- #
 listatarefas = []
+
+
+# ----- Path arquivo .json ----- #
+path_tarefas = os.path.expanduser(
+    "~/Tarefas App/data_tarefas.json")
+
+
+# ----- Cria .json e coloca na lista as tarefas guardadas ----- #	
+try:  # ----- Previne erro falta arquivo .json ----- #
+	with open(path_tarefas, 'r') as data:
+		listatarefas = json.load(data)
+
+except:
+	pass
 
 
 # --- Salva os dados em um ficheiro Json --- #
 def savedata():
 
-	with open('data.json', 'w') as data:
+	with open(path_tarefas, 'w') as data:
 		json.dump(listatarefas, data)
 
 
@@ -151,15 +174,6 @@ class Main(App):
 		self.icon = 'Images/Logo.ico'
 
 		return Principal()
-
-
-# ----- Coloca na lista as tarefas guardadas em .json ----- #	
-try:  # ----- Previne erro falta arquivo .json ----- #
-	with open('data.json', 'r') as data:
-		listatarefas = json.load(data)
-
-except:
-	pass
 
 
 # ----- Inicia Aplicação ----- #
