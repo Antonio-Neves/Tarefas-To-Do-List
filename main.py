@@ -10,23 +10,23 @@
 
 
 # ----- Importações iniciais ----- #
-#import kivy
-#kivy.require('1.11.0')
+# import kivy
+# kivy.require('1.11.0')
 
 import os
 from kivy import Config
+import platform
 
-# ----- Soluciona problemas de OpenGL e placas graficas antigas ----- #
-try:
+# ----- Soluciona problemas de OpenGL e placas graficas antigas em windows -- #
+if platform.system() == 'Windows':
+
 	os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 	Config.set('graphics', 'multisamples', '0')
-except:
-	pass
 
 # ----- Configuração da janela ----- #
 Config.set('graphics', 'resizable', True)
 Config.set('kivy', 'exit_on_escape', '0')
-Config.set('graphics', 'width', 300)
+Config.set('graphics', 'width', 350)
 Config.set('graphics', 'heigth', 500)
 
 
