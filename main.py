@@ -10,8 +10,8 @@
 
 
 # ----- Importações iniciais ----- #
-# import kivy
-# kivy.require('1.11.0')
+import kivy
+kivy.require('1.11.0')
 
 import os
 from kivy import Config
@@ -23,11 +23,16 @@ if platform.system() == 'Windows':
 	os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 	Config.set('graphics', 'multisamples', '0')
 
+# ----- Necessário para Video e Audio no Linux----- #
+if platform.system() == 'Linux':
+
+    os.environ['KIVY_VIDEO'] = 'ffpyplayer'
+
 # ----- Configuração da janela ----- #
-Config.set('graphics', 'resizable', True)
+Config.set('graphics', 'resizable', False)
 Config.set('kivy', 'exit_on_escape', '0')
-Config.set('graphics', 'width', 350)
-Config.set('graphics', 'heigth', 500)
+Config.set('graphics', 'width', 800)
+Config.set('graphics', 'height', 1000)
 
 
 # ----- Importações ----- #
