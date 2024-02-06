@@ -1,12 +1,12 @@
 
 # coding: utf-8
 
-#################################
-#            Tarefas            #
-#                               #
-# Author: António Silva Neves   #
-#           AN Informática      #
-#################################
+#####################################
+#				Tasks				#
+#									#
+# Author: António Calheiros Neves	#
+#									#
+#####################################
 
 
 # ----- Importações iniciais ----- #
