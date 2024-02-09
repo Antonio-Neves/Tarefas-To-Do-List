@@ -31,7 +31,7 @@ if platform.system() == 'Linux':
 # ----- Configuração da janela ----- #
 Config.set('graphics', 'resizable', False)
 Config.set('kivy', 'exit_on_escape', '0')
-Config.set('graphics', 'width', 800)
+Config.set('graphics', 'width', 700)
 Config.set('graphics', 'height', 1000)
 
 
@@ -113,12 +113,12 @@ class Principal(FloatLayout):
 
 	# --- Adiciona uma Tarefa --- #
 	def adicionar_tarefa(self, texto):
+		if texto:
+			self.ids.boxtarefas.add_widget(Tarefas(texto, self.cor_tarefa))
+			self.ids.texto.text = ''  # --- Inicia o text input vazio --- #
+			listatarefas.append([texto, self.cor_tarefa])
 
-		self.ids.boxtarefas.add_widget(Tarefas(texto, self.cor_tarefa))
-		self.ids.texto.text = ''  # --- Inicia o text input vazio --- #
-		listatarefas.append([texto, self.cor_tarefa])
-
-		savedata()
+			savedata()
 
 
 # ----- Wid Tarefa ----- #
