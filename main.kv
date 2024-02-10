@@ -13,7 +13,7 @@
 	# --- Barra superior --- #
 	FloatLayout:
 		id: principal
-		pos_hint: {'x': 0, 'y': .90}
+		pos_hint: {'x': 0, 'y': .93}
 		size_hint: (1, .10)
 		canvas.before:
 			Color:
@@ -23,8 +23,8 @@
 			    rectangle: self.x, self.y, self.width, 0
 
 		Button: # --- Botão que adiciona a tarefa --- #
-			pos_hint: {'x': .89, 'y': .20}
-			size_hint: (.08, .60)
+			pos_hint: {'x': .90, 'y': .20}
+			size_hint: (.05, .35)
 			border: (0, 0, 0, 0)
 			background_normal: 'Images/Ok.png'
 			background_down: 'Images/Ok.png'
@@ -38,9 +38,9 @@
 				RoundedRectangle:
 					pos: self.pos
 					size: self.size
-					radius: [4,]
+					radius: [5,]
 			pos_hint: {'x': .02, 'y': .20}
-			size_hint: (.74, .60)
+			size_hint: (.74, .35)
 
 			TextInput:
 				id: texto
@@ -48,6 +48,9 @@
 				background_normal: ''
 				background_color: (0, 0, 0, 0)
 				multiline: False
+				text_size: self.size
+			    halign: 'left'
+			    valign: 'middle'
 				hint_text: 'Tarefa'
 				on_text_validate: root.adicionar_tarefa(texto.text)
 
@@ -77,14 +80,14 @@
 			rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5, 100)
 			width: .5
 	size_hint_y: None
-	height: 40
+	height: 60
 
 	Label: # --- tarefa --- #
 		id: tarefa
 		pos_hint: {'x': 0, 'y': 0}
 		size_hint: (.90, 1)
 		text_size: self.size
-		padding: (5, 0)
+		padding: (10, 0)
 		halign: 'left'
 		valign: 'center'
 
@@ -98,7 +101,7 @@
 				rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5)
 				width: 1
 		pos_hint: {'x': .78, 'y': .20}
-		size_hint: (.09, .60)
+		size_hint: (.08, .60)
 		border: (0, 0, 0, 0)
 		background_normal: ''
 		background_color: (0, 0, 0, 0)
@@ -111,8 +114,8 @@
 
 	Button: # --- Botão remover tarefa --- #
 		id: removertarefa
-		pos_hint: {'x': .90, 'y': .22}
-		size_hint: (.09, .55)
+		pos_hint: {'x': .90, 'y': .20}
+		size_hint: (.06, .60)
 		border: (0, 0, 0, 0)
 		background_normal: 'Images/Close.png'
 		background_down: 'Images/Close.png'
