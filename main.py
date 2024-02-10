@@ -26,7 +26,7 @@ if platform.system() == 'Windows':
 # ----- Necessário para Video e Audio no Linux----- #
 if platform.system() == 'Linux':
 
-    os.environ['KIVY_VIDEO'] = 'ffpyplayer'
+	os.environ['KIVY_VIDEO'] = 'ffpyplayer'
 
 # ----- Configuração da janela ----- #
 Config.set('graphics', 'resizable', False)
@@ -43,10 +43,10 @@ from kivy.uix.floatlayout import FloatLayout
 
 # ----- Cria pastas ----- #
 try:
-    os.mkdir(os.path.expanduser(
-        "~/Tarefas App"))
+	os.mkdir(os.path.expanduser(
+		"~/Tarefas App"))
 except:
-    pass
+	pass
 
 
 # ----- Lista das tarefas ----- #
@@ -55,7 +55,7 @@ listatarefas = []
 
 # ----- Path arquivo .json ----- #
 path_tarefas = os.path.expanduser(
-    "~/Tarefas App/data_tarefas.json")
+	"~/Tarefas App/data_tarefas.json")
 
 
 # ----- Cria .json e coloca na lista as tarefas guardadas ----- #	
@@ -110,7 +110,6 @@ class Principal(FloatLayout):
 		# --- Define a cor inicial das tarefas --- #
 		self.cor_tarefa = (1, 1, 1, .3)
 
-
 	# --- Adiciona uma Tarefa --- #
 	def adicionar_tarefa(self, texto):
 		if texto:
@@ -144,7 +143,6 @@ class Tarefas(FloatLayout):
 		# --- Texto da tarefas --- #
 		self.ids.tarefa.text = self.texto
 
-
 	# --- Alteração das cores da tarefa ao pressionar o botão cor --- #
 	def cortarefa(self):		
 	
@@ -163,7 +161,6 @@ class Tarefas(FloatLayout):
 
 		# --- Salva as cores das tarefas --- #
 		salvar_cor_tarefa(self.texto, self.cor)
-
 
 	# --- Remove Tarefa da lista de Tarefas--- #
 	def remover_tarefa(self, texto):
