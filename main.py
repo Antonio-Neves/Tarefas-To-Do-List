@@ -70,8 +70,8 @@ except:
 # --- Salva os dados em um ficheiro Json --- #
 def savedata():
 
-	with open(path_tarefas, 'w') as data:
-		json.dump(listatarefas, data)
+	with open(path_tarefas, 'w') as task_data:
+		json.dump(listatarefas, task_data)
 
 
 # --- Salva as cores das tarefas no ficheiro Json --- #
