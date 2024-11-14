@@ -29,7 +29,7 @@ if platform.system() == 'Linux':
 	os.environ['KIVY_VIDEO'] = 'ffpyplayer'
 
 # ----- Configuração da janela ----- #
-Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'resizable', True)
 Config.set('kivy', 'exit_on_escape', '0')
 Config.set('graphics', 'width', 700)
 Config.set('graphics', 'height', 1000)
