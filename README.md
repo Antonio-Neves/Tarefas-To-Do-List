@@ -1,7 +1,7 @@
 # Tarefas-Tasks
 Aplicação para anotar tarefas / Application to note tasks
 
-Python
+Python 3.12 (don´t use 3.13 or 3.14)
 
 Kivy
 
