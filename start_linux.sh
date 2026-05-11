@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /media/antonio/D2T/dev/Tarefas-To-Do-List
+cd "$(dirname "$0")"
 
 source .venv/bin/activate
 
