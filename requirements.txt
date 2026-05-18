@@ -9,3 +9,4 @@ pillow==12.2.0
 Pygments==2.20.0
 requests==2.33.1
 urllib3
+
