@@ -1,0 +1,128 @@
+#:kivy 1.11.0
+#:import dp kivy.metrics.dp
+
+# --- Wid Principal --- #
+<Principal>:
+    canvas:
+        Color:
+            rgba: (0.05, 0.18, .41, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # --- Barra superior (Formulário maior verticalmente) --- #
+    FloatLayout:
+        id: principal
+        pos_hint: {'x': 0, 'y': .88}
+        size_hint: (1, .12)
+        canvas.before:
+            Color:
+                rgba: (1, 1, 1, .3)
+            Line:
+                width: .5
+                rectangle: self.x, self.y, self.width, 0
+
+        Button: # --- Botão que adiciona a tarefa --- #
+            pos_hint: {'x': .88, 'y': .25}
+            size_hint: (None, None)
+            size: dp(40), dp(40)
+            border: (0, 0, 0, 0)
+            background_normal: 'Images/Ok.png'
+            background_down: 'Images/Ok.png'
+            on_press: root.adicionar_tarefa(texto.text)
+
+        # --- Texto da tarefa --- #
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: (0.83, 0.94, 1, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20,]
+            pos_hint: {'x': .03, 'y': .25}
+            size_hint: (.80, None)
+            height: dp(45)
+
+            TextInput:
+                id: texto
+                focus: True
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                multiline: False
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                hint_text: 'Tarefa'
+                on_text_validate: root.adicionar_tarefa(texto.text)
+                font_size: '20sp'
+                padding: [dp(5), (self.height - self.line_height) / 2, dp(10), 0]
+
+    # ----- Wid rolagem da tela ----- #
+    ScrollView:
+        pos_hint: {'x': 0, 'y': .0}
+        size_hint: (1, .88)
+
+        BoxLayout: # --- Layout onde vão ser adicionadas as tarefas --- #
+            id: boxtarefas
+            padding: dp(12)
+            spacing: dp(15)  # Espaço entre os cards aumentado
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+
+
+# ----- Wid a ser adicionado por cada tarefa ----- #
+<Tarefas>:
+    id: widgettarefa
+    canvascolor: (1, 1, 1, .3)
+    canvas.before:
+        Color:
+            rgba: self.canvascolor
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5, 100)
+            width: .5
+    size_hint_y: None
+    height: dp(75)  # Altura dos cards aumentada substancialmente
+
+    Label: # --- tarefa --- #
+        id: tarefa
+        pos_hint: {'x': 0, 'y': 0}
+        size_hint: (.75, 1)
+        text_size: self.size
+        padding: (dp(15), 0)
+        halign: 'left'
+        valign: 'center'
+
+    Button: # --- Botão escolha da cor --- #
+        id: btn_cor
+        canvascolor: (1, 1, 1, .3)
+        canvas:
+            Color:
+                rgba: self.canvascolor
+            Line:
+                rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5)
+                width: 1
+        pos_hint: {'x': .76, 'y': .20}
+        size_hint: (None, None)
+        size: dp(40), dp(45)
+        border: (0, 0, 0, 0)
+        background_normal: ''
+        background_color: (0, 0, 0, 0)
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+        color: self.canvascolor
+        text: 'C'
+        on_release: root.cortarefa()
+
+    Button: # --- Botão remover tarefa --- #
+        id: removertarefa
+        pos_hint: {'x': .88, 'y': .20}
+        size_hint: (None, None)
+        size: dp(40), dp(45)
+        border: (0, 0, 0, 0)
+        background_normal: 'Images/Close.png'
+        background_down: 'Images/Close.png'
+        on_release: root.remover_tarefa(tarefa.text)
+        on_release: app.root.ids.boxtarefas.remove_widget(root)
