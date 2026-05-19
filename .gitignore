@@ -5,7 +5,10 @@
 .vscode
 
 # Virtualenv
-.venv
+.venv/
 
-#dist folder
-dist
+# dist folder
+dist/
+
+# Folders
+.buildozer/
