@@ -5,7 +5,7 @@ filetype==1.2.0
 idna==3.13
 Kivy==2.3.1
 Kivy-Garden==0.1.5
-pillow==12.2.0
+pillow
 Pygments==2.20.0
 requests==2.33.1
 urllib3
